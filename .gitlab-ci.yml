@@ -1,0 +1,10 @@
+image: docker
+services:
+  - docker:dind
+
+test:
+  script:
+    - docker login -u "tpeters615" --password-stdin
+    - docker build --tag=cis --file ./gradle_directory/Dockerfile .
+    - docker run cis 
+  
